@@ -18,11 +18,18 @@
 			var mpList = xhr.response;
 			var mobilePlans = JSON.parse(mpList)
 			
-			
 			var mobilePlanList = document.getElementById("mobileplans");
-            
-            mobilePlanList.innerHTML += '<li>' + mobilePlans[idn-1].id +"&nbsp;&nbsp;&nbsp;&nbsp;"+ mobilePlans[idn-1].name +"&nbsp;&nbsp;&nbsp;&nbsp;"+ mobilePlans[idn-1].description + '</li>';
-          	
+             for (var i = 0; i < mobilePlans.length; i++) 
+             {
+                    if( mobilePlans[i].id==idn)
+                        {
+                        mobilePlanList.innerHTML += '<li>' + mobilePlans[i].id +"&nbsp;&nbsp;&nbsp;&nbsp;"+ mobilePlans[i].name +"&nbsp;&nbsp;&nbsp;&nbsp;"+ mobilePlans[i].description +"&nbsp;&nbsp;&nbsp;&nbsp;"+ mobilePlans[i].validity + '</li>';
+ 
+
+                        }
+                }
+			
+		
 		}
 	</script>
 </head>
