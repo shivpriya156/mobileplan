@@ -6,9 +6,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <style>
+  .text-align-center{
+	text-align:center;
+	 border: 1px solid black;
+  border-collapse: collapse;
+}
+  </style>
 	<title>mobileplan</title>
-
+	
     <!-- This is a very crude way of doing things meant for learning and training only -->
 	<script type="text/javascript">
 		function getmobileplanlist() {
@@ -16,25 +22,41 @@
 			xhr.open("GET", "http://localhost:8080/mp", false);
 			xhr.send();
 			var mpList = xhr.response;
-			alert(mpList);
+			
+			//alert(mpList);
 			var mobilePlans = JSON.parse(mpList)
 			
 			
 			var mobilePlanList = document.getElementById("mobileplans");
-            for (var i = 0; i < mobilePlans.length; i++) {
-                mobilePlanList.innerHTML += '<li>' + mobilePlans[i].id +"&nbsp;&nbsp;&nbsp;&nbsp;"+ mobilePlans[i].name +"&nbsp;&nbsp;&nbsp;&nbsp;"+ mobilePlans[i].description  +"&nbsp;&nbsp;&nbsp;&nbsp;"+  mobilePlans[i].validity + '</li>';
-            }	
+			
+			
+			
+         for (var i = 0; i < mobilePlans.length; i++) {
+                mobilePlanList.innerHTML += '<tr>' +'<td class="text-align-center">'+ mobilePlans[i].id+'</td>'+'<td class="text-align-center">'+mobilePlans[i].name+'</td>' + '<td class="text-align-center">' + mobilePlans[i].description + '</td>'  + '<td class="text-align-center">' + mobilePlans[i].validity + '</td>' + '</tr>';
+            }
+            
+            	
+            
 		}
 	</script>
+	
 	</head>
+	
 
 <body onload=getmobileplanlist()>
 	Hello! The mobile plans in the db are: <br>
 
-	<ul id="mobileplans">
-	</ul>
+	<table id="mobileplans" style="width:30%";>
+	<tr>
+	<th>id</th>
+	<th>name</br></th>
+	<th>discription</br></th>
+	<th>validity</th>
+	</tr>
+	
+	</table>
 
 
 </body>
 
-</html
+</html>
